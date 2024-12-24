@@ -10,6 +10,7 @@ import miCarreraRoutes from './routes/miCarreraRoutes.js';
 import aprobadasRoutes from './routes/aprobadasRoutes.js';
 import alumnoRoutes from './routes/alumnoRoutes.js'
 import equivalenciasRoutes from './routes/equivalenciasRoutes.js'
+import path from 'path'; 
 
 dotenv.config();
 
@@ -34,9 +35,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false, 
+    secure: false,
     httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 // 1 día
+    maxAge: 1000 * 60 * 60 * 24 
   }
 }));
 
@@ -51,14 +52,23 @@ app.use(cors({
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+
 app.use("/api", planRoutes);
 app.use("/api", registerRoutes);
 app.use('/api', loginRoutes);
 app.use('/api', miCarreraRoutes);
 app.use('/api', aprobadasRoutes);
-app.use('/api', aprobadasRoutes);
 app.use('/api', alumnoRoutes);
 app.use('/api', equivalenciasRoutes);
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en puerto ${port}`);
