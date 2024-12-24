@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
-import dotenv from 'dotenv'
-dotenv.config()
+
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 

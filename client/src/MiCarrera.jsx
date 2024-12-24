@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Modal } from "react-bootstrap";
-import dotenv from 'dotenv'
-dotenv.config()
+
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -76,14 +75,23 @@ export const MiCarrera = () => {
     e.preventDefault();
   };
 
-  const mensajes = { "Primera materia agregada": "¡Oficialmente has comenzado! ¡Bien hecho!👏👏👏", 
-    "Otra materia agregada": "¡Genial! ¡Lo hiciste!","Programación 2": "¿Tuviste la sensación de que aprendiste mucho en esta materia?🤔🤗", "Laboratorio I": "¡Felicitaciones por tu primer proyecto en Java!🥳", "Estructura de Datos y Algoritmos": "¡Tu 🧠 nunca se olvidará de EDA!🤣🤣🤣", "Programación Web": "¡Excelente! ¡Vamos por más!😎", "Laboratorio II": "¡Trabajaste mucho! ¡El esfuezo rindió frutos!🥳", "Programación en Entorno .NET": "¡Las tecnologías de Microsoft son fundamentales!✅", "Laboratorio de Programación III": "¡Increible, todo lo que has logrado!🤓", "Laboratorio de Programación III": "¡Impresionante todo lo que aprendiste!💻♥️", "Redes": "¡Estás en la recta final!🏃‍♂️‍➡️➡️", "Seguridad Informática": "¡Un area muy interesante para desarrollarte!🤓",
-    "Última materia":"¡Feelicitaciones!🎓 ¡Lo has Logrado!🥳🎊",
-    "Mensaje final 1":"¡Se que hiciste un gran esfuerzo para lograr tu meta!😓",
-    "Mensaje final 2":"¡Pero valió la pena!😀",
-    "Mensaje final 3": "¡Te esperan nuevos desafíos en el ámbito profesional!🦾",
-    "Mensaje final 4":"¡Muchos éxitos te esperan!👋🫂" 
-  }; 
+  const mensajes = {
+    "Primera materia agregada": "¡Oficialmente has comenzado! ¡Bien hecho!👏👏👏", 
+    "Otra materia agregada": "¡Genial! ¡Lo hiciste!",
+    "Programación 2": "¿Tuviste la sensación de que aprendiste mucho en esta materia?🤔🤗",
+    "Laboratorio I": "¡Felicitaciones por tu primer proyecto en Java!🥳",
+    "Estructura de Datos y Algoritmos": "¡Tu 🧠 nunca se olvidará de EDA!🤣🤣🤣",
+    "Programación Web": "¡Excelente! ¡Vamos por más!😎",
+    "Laboratorio II": "¡Trabajaste mucho! ¡El esfuerzo rindió frutos!🥳",
+    "Programación en Entorno .NET": "¡Las tecnologías de Microsoft son fundamentales!✅",
+    "Laboratorio de Programación III - Increíble": "¡Increíble todo lo que has logrado!🤓",
+    "Laboratorio de Programación III - Impresionante": "¡Impresionante todo lo que aprendiste!💻♥️",
+    "Redes": "¡Estás en la recta final!🏃‍♂️‍➡️➡️",
+    "Seguridad Informática": "¡Un área muy interesante para desarrollarte!🤓",
+    "Última materia": "¡Felicitaciones!🎓 ¡Lo has Logrado!🥳🎊",
+    "Mensaje final 1": "¡Sé que hiciste un gran esfuerzo para lograr tu meta!😓"
+  };
+  
   
   const handleDrop = (e) => {
     const materiaId = e.dataTransfer.getData("materiaId");

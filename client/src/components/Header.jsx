@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Modal } from "react-bootstrap";
-import dotenv from 'dotenv'
-dotenv.config()
+
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 

@@ -1,8 +1,7 @@
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import React, { useEffect, useState } from "react";
-import dotenv from 'dotenv'
-dotenv.config()
+
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
