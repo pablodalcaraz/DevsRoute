@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Modal } from "react-bootstrap";
+import dotenv from 'dotenv'
+dotenv.config()
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const MiCarrera = () => {
   const [materias, setMaterias] = useState([]);
@@ -18,7 +22,7 @@ export const MiCarrera = () => {
 
   const fetchMaterias = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/mi-carrera", {
+      const response = await fetch(`${API_BASE_URL}/api/mi-carrera`, {
         method: "GET",
         credentials: "include",
       });
@@ -39,7 +43,7 @@ export const MiCarrera = () => {
 
   const fetchMateriasAprobadas = async () => { 
     try { 
-      const response = await fetch("http://localhost:3000/api/ver-aprobadas", 
+      const response = await fetch(`${API_BASE_URL}/api/ver-aprobadas`, 
        { method: "GET", 
        credentials: "include", 
        }); 
@@ -188,7 +192,7 @@ const mostrarMensajeFinal = () => {
   const guardarMateria = async (materiaId) => {
     try {
         console.log(`Enviando id_materia: ${materiaId}`);
-        const response = await fetch("http://localhost:3000/api/guardar-materias", {
+        const response = await fetch(`${API_BASE_URL}/api/guardar-materias`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -228,7 +232,7 @@ const handleGuardarMaterias = () => {
 const borrarMateria = async (materiaId) => {
   try {
     console.log(`Eliminando id_materia: ${materiaId}`);
-    const response = await fetch("http://localhost:3000/api/borrar-materias", {
+    const response = await fetch(`${API_BASE_URL}/api/borrar-materias`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -302,7 +306,7 @@ const handleRemoveMateria = async (materiaId) => {
 
   const actualizarPlan = async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/update-plan', {
+        const response = await fetch(`${API_BASE_URL}/api/update-plan`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -1,6 +1,10 @@
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import React, { useEffect, useState } from "react";
+import dotenv from 'dotenv'
+dotenv.config()
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const Equivalencias = () => {
   const [equivalencias, setEquivalencias] = useState([]);
@@ -9,7 +13,7 @@ export const Equivalencias = () => {
   useEffect(() => {
     const fetchEquivalencias = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/equivalencias");
+        const response = await fetch(`${API_BASE_URL}/api/equivalencias`);
         if (!response.ok) {
           throw new Error("Error al obtener las equivalencias");
         }

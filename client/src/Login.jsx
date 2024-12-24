@@ -1,6 +1,10 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
+import dotenv from 'dotenv'
+dotenv.config()
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const Login = ({ handleSwitchToRegister, handleCloseModal, setUsuario }) => {
   const [errors, setErrors] = useState({});
@@ -25,7 +29,7 @@ export const Login = ({ handleSwitchToRegister, handleCloseModal, setUsuario }) 
     const json = JSON.stringify(Object.fromEntries(formData.entries()));
   
     try {
-      const response = await fetch("http://localhost:3000/api/login", {
+      const response = await fetch(`${API_BASE_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: json,

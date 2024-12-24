@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Modal } from "react-bootstrap";
+import dotenv from 'dotenv'
+dotenv.config()
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const Header = () => {
   const [showModal, setShowModal] = useState(false);
@@ -17,7 +21,7 @@ export const Header = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:3000/api/session", { credentials: "include" })
+    fetch(`${API_BASE_URL}/api/session`, { credentials: "include" })
       .then((res) => {
         console.log("Respuesta del servidor obtenida:", res);
         if (!res.ok) {
@@ -37,7 +41,7 @@ export const Header = () => {
   }, []);
 
   const handleLogout = () => {
-    fetch("http://localhost:3000/api/logout", { credentials: "include" })
+    fetch(`${API_BASE_URL}/api/logout`, { credentials: "include" })
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error al cerrar sesión");

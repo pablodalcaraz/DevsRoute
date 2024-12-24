@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import dotenv from 'dotenv'
+dotenv.config()
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const Planes = () => {
   const [planes, setPlanes] = useState([]);
@@ -10,7 +14,7 @@ export const Planes = () => {
   useEffect(() => {
     const fetchPlanes = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/planes");
+        const response = await fetch(`${API_BASE_URL}/api/planes`);
         const data = await response.json();
         setPlanes(data);
       } catch (error) {
@@ -33,7 +37,7 @@ export const Planes = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/materias?id_plan_de_estudio=${idPlanSeleccionado}`
+        `${API_BASE_URL}/api/materias?id_plan_de_estudio=${idPlanSeleccionado}`
       );
       const data = await response.json();
       setMaterias(data);

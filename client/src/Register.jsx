@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import dotenv from 'dotenv'
+dotenv.config()
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const Register = ({handleSwitchToLogin}) => {
   const [planes, setPlanes] = useState([]);
@@ -9,7 +13,7 @@ export const Register = ({handleSwitchToLogin}) => {
   useEffect(() => {
     const fetchPlanes = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/planes");
+        const response = await fetch(`${API_BASE_URL}/api/planes`);
         const data = await response.json();
         setPlanes(data);
       } catch (error) {
@@ -50,7 +54,7 @@ export const Register = ({handleSwitchToLogin}) => {
     const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
     try {
-      const response = await fetch("http://localhost:3000/api/register", {
+      const response = await fetch(`${API_BASE_URL}/api/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: json,
