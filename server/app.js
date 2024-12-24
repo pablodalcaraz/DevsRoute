@@ -10,7 +10,12 @@ import miCarreraRoutes from './routes/miCarreraRoutes.js';
 import aprobadasRoutes from './routes/aprobadasRoutes.js';
 import alumnoRoutes from './routes/alumnoRoutes.js'
 import equivalenciasRoutes from './routes/equivalenciasRoutes.js'
-import path from 'path'; 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Definir __dirname utilizando import.meta.url
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -35,7 +40,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false,
+    secure: false, 
     httpOnly: true,
     maxAge: 1000 * 60 * 60 * 24 
   }
