@@ -12,6 +12,7 @@ import alumnoRoutes from './routes/alumnoRoutes.js'
 import equivalenciasRoutes from './routes/equivalenciasRoutes.js'
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs'; // Importar el módulo fs
 
 dotenv.config();
 
@@ -62,7 +63,7 @@ app.use('/api', aprobadasRoutes);
 app.use('/api', alumnoRoutes);
 app.use('/api', equivalenciasRoutes);
 
-// Sirve archivos estáticos solo si están presentes y en producción
+
 if (process.env.NODE_ENV === 'production') {
   const clientDistPath = path.join(__dirname, '../client/dist');
   if (fs.existsSync(clientDistPath)) {
