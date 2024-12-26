@@ -62,12 +62,17 @@ app.use('/api', aprobadasRoutes);
 app.use('/api', alumnoRoutes);
 app.use('/api', equivalenciasRoutes);
 
-// Sirve archivos estáticos solo en producción
+// Sirve archivos estáticos solo si están presentes y en producción
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-  });
+  const clientDistPath = path.join(__dirname, '../client/dist');
+  if (fs.existsSync(clientDistPath)) {
+    app.use(express.static(clientDistPath));
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(clientDistPath, 'index.html'));
+    });
+  } else {
+    console.warn("Carpeta 'client/dist' no encontrada. Servidor sólo de backend activo.");
+  }
 }
 
 app.listen(port, () => {
