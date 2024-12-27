@@ -91,30 +91,6 @@ export const MiCarrera = () => {
     "Última materia": "¡Felicitaciones!🎓 ¡Lo has Logrado!🥳🎊",
     "Mensaje final 1": "¡Sé que hiciste un gran esfuerzo para lograr tu meta!😓"
   };
-  const handleTouchStart = (e, materia) => {
-    e.dataTransfer = e.target; // Asociar el elemento
-    setTouchedMateria(materia); // Guardar la materia que se toca
-  };
-  
-  const handleTouchMove = (e) => {
-    const touch = e.touches[0];
-    const target = document.elementFromPoint(touch.clientX, touch.clientY);
-  
-    if (target && target.classList.contains("seleccionadas")) {
-      target.style.border = "2px solid #4caf50"; // Indicar área válida
-    } else {
-      target.style.border = "2px dashed #4caf50";
-    }
-  };
-  
-  const handleTouchEnd = (e) => {
-    const touch = e.changedTouches[0];
-    const target = document.elementFromPoint(touch.clientX, touch.clientY);
-  
-    if (target && target.classList.contains("seleccionadas")) {
-      handleDrop({ target }, touchedMateria); // Simular el drop
-    }
-  };
   
   
   const handleDrop = (e) => {
@@ -370,213 +346,176 @@ const handleRemoveMateria = async (materiaId) => {
   
   return (
     <>
-    <div
-      className="container-fluid bg-dark"
-      style={{ width: "100%", padding: "20px", boxSizing: "border-box" }}
-    >
-      <Header />
-      <h2
-        className="text-center mt-5 mb-4 text-light"
-        style={{ paddingTop: "50px" }}
-      >
-        Materias de Mi Carrera
-      </h2>
-  
-      {error && <p style={{ display: "none" }}>{error}</p>}
-  
-      <div className="container">
-        <div className="text-warning" style={{ color: "white" }}>
-          <p className="mb-4" style={{ display: "flex", gap: "5px" }}>
-            Si te cambiaste de Plan de Estudio, podés actualizarlo haciendo clic
-            <span
-              className="text-danger"
-              onClick={actualizarPlan}
-              style={{ cursor: "pointer", textDecoration: "underline" }}
-              role="button"
-              aria-label="Actualizar Plan de Estudio"
-            >
-              acá
-            </span>
-          </p>
-        </div>
-  
-        <div
-          className="materias mb-4"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            gap: "5px 10px",
-          }}
-        >
-          {materias.map((materia) => (
-            <div
-              className="materia"
-              key={materia.id_materia}
-              draggable
-              onDragStart={(e) => handleDragStart(e, materia)}
-              onTouchStart={(e) => handleTouchStart(e, materia)}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-              style={{
-                width: "150px",
-                height: "70px",
-                borderRadius: "5px",
-                backgroundColor: getRandomColor(),
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                cursor: "move",
-                padding: "10px",
-                textAlign: "center",
-                color: "#fff",
-                fontSize: "12px",
-                fontWeight: "bold",
-                position: "relative",
-              }}
-            >
-              {materia.nombre_materia}
-            </div>
-          ))}
-        </div>
-  
-        <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
-          <div style={{ flexGrow: 2 }}>
-            <div
-              style={{
-                height: "25px",
-                backgroundColor: "#ddd",
-                borderRadius: "5px",
-                overflow: "hidden",
-              }}
-            >
-              <div
-                style={{
-                  height: "100%",
-                  width: `${progreso}%`,
-                  backgroundColor: getProgressColor(progreso),
-                  transition: "width 0.3s, background-color 0.3s",
-                }}
-              />
-            </div>
-            <p
-              className="text-center"
-              style={{ marginLeft: "10px", color: "white" }}
-            >
-              <strong
-                className="text-warning"
-                style={{ marginRight: "10px" }}
-              >
-                {progreso.toFixed(2)}
-              </strong>
-              % de progreso en tu carrera
-            </p>
-          </div>
-        </div>
-  
-        <div
-          className="seleccionadas"
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          style={{
-            width: "100%",
-            height: "300px",
-            borderRadius: "5px",
-            border: "2px dashed #4caf50",
-            padding: "10px",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "10px",
-            backgroundColor: "#fefefe",
-            marginBottom: "20px",
-          }}
-        >
-          {contenedorMaterias.length === 0 ? (
-            <p style={{ opacity: "50%" }}>Arrastra las materias aquí</p>
-          ) : (
-            contenedorMaterias.map((materia) => (
-              <div key={materia.id_materia}>
-                <div
-                  className="seleccionadas-mt"
-                  style={{
-                    width: "146px",
-                    height: "70px",
-                    borderRadius: "5px",
-                    backgroundColor: "#4caf50",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    color: "#fff",
-                    fontWeight: "bold",
-                    position: "relative",
-                    fontSize: "13px",
-                    textAlign: "center",
-                    margin: "0",
-                  }}
+    <div className="container-fluid bg-dark" style={{ width: "100%", padding: "20px", boxSizing: "border-box"}}>
+      <Header/>
+      <h2 className="text-center mt-5 mb-4 text-light" style={{paddingTop:'50px'}}>Materias de Mi Carrera</h2>
+      
+      {error && <p style={{display:'none'}}>{error}</p>}
+
+      <div className="container " >
+      <div className="text-warning" style={{ color: 'white' }}>
+            <p className="mb-4" style={{ display: 'flex', gap: '5px' }}>
+                Si te cambiaste de Plan de Estudio, podés actualizarlo haciendo clic
+                <span 
+                    className="text-danger" 
+                    onClick={actualizarPlan} 
+                    style={{ cursor: 'pointer', textDecoration: 'underline' }}
+                    role="button"
+                    aria-label="Actualizar Plan de Estudio"
                 >
-                  {materia.nombre_materia}
-                  <button
-                    onClick={() => handleRemoveMateria(materia.id_materia)}
-                    className="btn-close"
-                    style={{
-                      position: "absolute",
-                      top: "5px",
-                      right: "5px",
-                      backgroundColor: "transparent",
-                      border: "none",
-                      fontSize: "12px",
-                      color: "#fff",
-                      opacity: "0.8",
-                    }}
-                  />
-                </div>
-              </div>
-            ))
-          )}
+                    acá
+                </span>
+            </p>
         </div>
-  
-        <button
-          onClick={handleGuardarMaterias}
-          className="btn btn-primary"
-          style={{ marginBottom: "20px" }}
-        >
-          Guardar Materias
-        </button>
+        
+        <div className="materias mb-4" style={{ display: "flex",flexDirection:'row', flexWrap: "wrap",gap:'5px 10px'}}>
+        
+        {materias.map((materia) => (
+          
+          <div className="materia"
+            key={materia.id_materia}
+            draggable
+            onDragStart={(e) => handleDragStart(e, materia)}
+            style={{
+              width: "150px",
+              height: "70px",
+              borderRadius: "5px",
+              backgroundColor: getRandomColor(),
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "move",
+              padding: "10px",
+              textAlign: "center",
+              color: "#fff",
+              fontSize:'12px',
+              fontWeight: "bold",
+              position: "relative",
+            }}
+          >
+            {materia.nombre_materia}
+            
+          </div>
+        
+        ))}
+      
+        </div>
+        
+        
+      
+       
+        <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
+        
+        <div style={{ flexGrow: 2 }}>
+          <div
+            style={{
+              height: "25px",
+              backgroundColor: "#ddd",
+              borderRadius: "5px",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                height: "100%",
+                width: `${progreso}%`,
+                backgroundColor: getProgressColor(progreso),
+                transition: "width 0.3s, background-color 0.3s",
+              }}
+            />
+          </div>
+          <p className="text-center" style={{ marginLeft: "10px",color:'white'}}><strong className="text-warning" style={{marginRight:'10px'}}>{progreso.toFixed(2)}</strong>% de progreso en tu carrera</p>
+        </div>
+        </div>
+      <div className="seleccionadas"
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        style={{
+          width: "100%",
+          height: "300px",
+          borderRadius:'5px',
+          border: "2px dashed #4caf50",
+          padding: "10px",
+          display: "flex",
+          flexWrap: "wrap",
+          gap:'10px',
+          backgroundColor: "#fefefe",
+          marginBottom: "20px",
+        }}
+      >
+        
+        {contenedorMaterias.length === 0 ? (
+          <p style={{opacity:'50%'}}>Arrastra las materias aquí</p>
+        ) : (
+          contenedorMaterias.map((materia) => (
+            <div key={materia.id_materia}>
+              <div >
+              <div className="seleccionadas-mt"
+                style={{
+                  width: "146px",
+                  height: "70px",
+                  borderRadius: "5px",
+                  backgroundColor: "#4caf50",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  color: "#fff",
+                  fontWeight: "bold", 
+                  position: "relative",
+                  fontSize:'13px',
+                  textAlign:'center',
+                  margin:'0'
+                }}
+              >
+                
+                {materia.nombre_materia}
+                
+                <button
+                  onClick={() => handleRemoveMateria(materia.id_materia)}
+                  className="btn-close"
+                  style={{
+                    position: "absolute",
+                    top: "5px",
+                    right: "5px",
+                    backgroundColor: "transparent",
+                    border: "none",
+                    fontSize:'12px',
+                    color: "#fff",
+                    opacity: "0.8"
+                  }}
+                />
+                </div>
+                
+              </div>
+            </div>
+          ))
+        )}
       </div>
-  
-      <Modal
-        show={showModal}
-        onHide={() => setShowModal(false)}
-        className="custom-modal"
+
+      <button 
+        onClick={handleGuardarMaterias}
+        className="btn btn-primary"
+        style={{ marginBottom: "20px" }}
       >
-        <Modal.Body className="modal-body">{mensajeMotivacional}</Modal.Body>
+        Guardar Materias
+      </button>
+
+      </div>
+
+      <Modal  show={showModal} onHide={() => setShowModal(false)} className="custom-modal">
+        <Modal.Body className="modal-body ">{mensajeMotivacional}</Modal.Body>
       </Modal>
-      <Modal
-        show={showModalExito}
-        onHide={() => setShowModalExito(false)}
-        className="custom-modal"
-      >
-        <Modal.Body className="modal-body">{mensajeExito}</Modal.Body>
+      <Modal  show={showModalExito} onHide={() => setShowModalExito(false)} className="custom-modal">
+        <Modal.Body className="modal-body ">{mensajeExito}</Modal.Body>
       </Modal>
-      <Modal
-        show={showModalBorrar}
-        onHide={() => setShowModalBorrar(false)}
-        className="custom-modal"
-      >
-        <Modal.Body className="modal-body">{mensajeBorrar}</Modal.Body>
+      <Modal  show={showModalBorrar} onHide={() => setShowModalBorrar(false)} className="custom-modal">
+        <Modal.Body className="modal-body ">{mensajeBorrar}</Modal.Body>
       </Modal>
-      <Modal
-        show={showModalActualizar}
-        onHide={() => setShowModalActualizar(false)}
-        className="custom-modal"
-      >
-        <Modal.Body className="modal-body">{mensajeActualizar}</Modal.Body>
+      <Modal  show={showModalActualizar} onHide={() => setShowModalActualizar(false)} className="custom-modal">
+        <Modal.Body className="modal-body ">{mensajeActualizar}</Modal.Body>
       </Modal>
     </div>
-    <Footer />
-  </>
-  
+    <Footer/>
+    </>
   );
 };
