@@ -131,22 +131,22 @@ export const Header = () => {
             <ul className="navbar-nav" style={{ paddingTop: "5px" }}>
               <li className="nav-item">
                 <Link className="nav-link" to="/">
-                  <strong>Home</strong>
+                  <strong style={{color: "#ffa832"}}>Home</strong>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/planes">
-                  <strong>Planes Vigentes</strong>
+                  <strong style={{color: "#ffa832"}}>Planes Vigentes</strong>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link " to="/equivalencias">
-                  <strong>Equivalencias</strong> 
+                  <strong style={{color: "#ffa832"}}>Equivalencias</strong> 
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link " to="/mi-carrera">
-                  <strong>Mi Carrera</strong>
+                  <strong style={{color: "#ffa832"}}>Mi Carrera</strong>
                 </Link>
               </li>
             </ul>
