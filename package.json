@@ -4,7 +4,10 @@
   "description": "",
   "main": "server/app.js",
   "scripts": {
-    "start": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\""
+    "start": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "build": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",
