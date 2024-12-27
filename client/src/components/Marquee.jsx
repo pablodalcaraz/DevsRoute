@@ -14,11 +14,11 @@ const Marquee = () => {
     'de la Tecnicatura en Desarrollo de Software de la ULP🤓',
     <>
       Desarrollada en 
-      <img src={ReactIcon} alt="React" style={{ width: '30px', height: '30px', marginLeft: '5px' }} />
+      <img className="icon-tec" src={ReactIcon} alt="React" style={{ width: '30px', height: '30px', marginLeft: '5px' }} />
        
-      <img src={NodeIcon} alt="Node.js" style={{ width: '30px', height: '30px', marginLeft: '5px' }} /> 
+      <img className="icon-tec" src={NodeIcon} alt="Node.js" style={{ width: '30px', height: '30px', marginLeft: '5px' }} /> 
        y 
-      <img src={MySqlIcon} alt="MySQL" style={{ width: '30px', height: '30px', marginLeft: '5px' }} />
+      <img className="icon-tec" src={MySqlIcon} alt="MySQL" style={{ width: '30px', height: '30px', marginLeft: '5px' }} />
     </>,
     "Registrarte y armar tu Ruta de desarrollador🏃‍➡️➡️",
   ];
