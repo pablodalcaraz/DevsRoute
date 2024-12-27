@@ -499,7 +499,7 @@ const handleRemoveMateria = async (materiaId) => {
             contenedorMaterias.map((materia) => (
               <div key={materia.id_materia}>
                 <div
-                  className="seleccionadas"
+                  className="seleccionadas-mt"
                   style={{
                     width: "146px",
                     height: "70px",
