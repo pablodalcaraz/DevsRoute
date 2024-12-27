@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import session from "express-session";
 import MySQLStoreImport from "express-mysql-session";
+import pool from './database/db.js'
 import planRoutes from "./routes/planRoutes.js";
 import registerRoutes from "./routes/registerRoutes.js";
 import loginRoutes from './routes/loginRoutes.js';
@@ -24,6 +25,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 const MySQLStore = MySQLStoreImport(session);
 
+
+
 const options = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
@@ -32,7 +35,7 @@ const options = {
   database: process.env.DB_NAME,
 };
 
-const sessionStore = new MySQLStore(options);
+const sessionStore = new MySQLStore(options, pool);
 
 app.use(session({
   key: process.env.SESSION_KEY,
