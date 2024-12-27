@@ -10,13 +10,13 @@ export const Footer = () => {
       <p>© 2024 pablodalcaraz. Todos los derechos reservados.</p>
     </div>
     <div className="icons">
-      <a href="#" target="_blank" className="github">
+      <a href="https://github.com/pablodalcaraz/DevsRoute.git" target="_blank" className="github">
         <FaGithub />
       </a>
       <a href="https://www.linkedin.com/in/pablo-alcaraz-822636186/" target="_blank" className="linkedin">
         <FaLinkedin />
       </a>
-      <a href="#" target="_blank" className="web">
+      <a href="https://portfoliopabloalcaraz.netlify.app/" target="_blank" className="web">
         <TfiWorld />
       </a>
     </div>
