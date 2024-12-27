@@ -56,7 +56,8 @@ export const Planes = () => {
           <div className="row align-items-center">
             <div className="col-12 col-md-8">
               <select
-                className="form-select"
+                className="form-select bg-dark"
+                style={{width:'160px'}}
                 id="planEstudio"
                 name="id_plan_de_estudio"
                 value={idPlanSeleccionado}

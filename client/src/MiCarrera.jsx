@@ -503,16 +503,16 @@ const handleRemoveMateria = async (materiaId) => {
       </div>
 
       <Modal  show={showModal} onHide={() => setShowModal(false)} className="custom-modal">
-        <Modal.Body style={{backgroundColor:'#000', borderRadius:'5px'}} className="modal-body mt-5">{mensajeMotivacional}</Modal.Body>
+        <Modal.Body className="modal-body ">{mensajeMotivacional}</Modal.Body>
       </Modal>
       <Modal  show={showModalExito} onHide={() => setShowModalExito(false)} className="custom-modal">
-        <Modal.Body style={{backgroundColor:'#000', borderRadius:'5px'}} className="modal-body mt-5">{mensajeExito}</Modal.Body>
+        <Modal.Body className="modal-body ">{mensajeExito}</Modal.Body>
       </Modal>
       <Modal  show={showModalBorrar} onHide={() => setShowModalBorrar(false)} className="custom-modal">
-        <Modal.Body style={{backgroundColor:'#000', borderRadius:'5px'}} className="modal-body mt-5">{mensajeBorrar}</Modal.Body>
+        <Modal.Body className="modal-body ">{mensajeBorrar}</Modal.Body>
       </Modal>
       <Modal  show={showModalActualizar} onHide={() => setShowModalActualizar(false)} className="custom-modal">
-        <Modal.Body style={{backgroundColor:'#000', borderRadius:'5px'}} className="modal-body mt-5">{mensajeActualizar}</Modal.Body>
+        <Modal.Body className="modal-body ">{mensajeActualizar}</Modal.Body>
       </Modal>
     </div>
     <Footer/>

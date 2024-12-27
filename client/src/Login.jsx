@@ -131,7 +131,7 @@ export const Login = ({ handleSwitchToRegister, handleCloseModal, setUsuario }) 
         </small>
       </div>
       <Modal show={showModal} className="custom-modal-bv">
-        <Modal.Body style={{ backgroundColor: "#332f2c", borderRadius: "5px", height:'100%' }} className="modal-body-bv mt-5">
+        <Modal.Body className="modal-body-bv">
           <p style={{ color: "#fff", textAlign: "center", margin: 0 }}>{mensajeBienvenida}</p>
         </Modal.Body>
       </Modal>
