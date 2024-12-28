@@ -2,7 +2,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import Logo from './images/logo.png';
 import Logo_2 from './images/logo_2.jpg';
-import Background from './images/bg-16.jpg'
+import Background from './images/bg-16.webp'
 import Marquee from "./components/Marquee";
 import { useEffect } from "react";
 
